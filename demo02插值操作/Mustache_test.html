@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <!--mustache 语法-->
+    {{message}}
+    <h2>{{firstName}}</h2>
+    <h2>{{firstName}} {{lastName}}</h2>
+    <h2>{{firstName + ' ' +  lastName}}</h2>
+    <h2>{{counter * 2}}</h2>
+
+
+</div>
+<script src="../js/vue.js"></script>
+<script >
+    const obj ={ //定义数据
+        message: '你好',
+        firstName: 'wang',
+        lastName: 'jia',
+        counter: 100
+
+    }
+    //let 变量  const 常量
+    const app = new Vue({
+
+        el: '#app', //用于管理要挂载的元素
+        data: obj
+    })
+</script>
+</body>
+</html>

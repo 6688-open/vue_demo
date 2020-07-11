@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <!--mustache 语法-->
+    {{message}}
+<!--
+    <img src="https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1593951228&di=6e5d0d97cb7999bfefd621263a13137e&src=http://a3.att.hudong.com/14/75/01300000164186121366756803686.jpg" alt="">
+-->
+    <!--属性绑定 -->
+    <img v-bind:src="imgUrl">
+    <a v-bind:href="aHref">百度一下</a>
+    <!--语法糖 缩写-->
+    <a :href="aHref">百度一下2</a>
+
+</div>
+<script src="../js/vue.js"></script>
+<script >
+    const obj ={ //定义数据
+        message: '你好',
+        imgUrl: 'https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1593951228&di=6e5d0d97cb7999bfefd621263a13137e&src=http://a3.att.hudong.com/14/75/01300000164186121366756803686.jpg',
+        aHref: 'http://www.baidu.com'
+
+    }
+    //let 变量  const 常量
+    const app = new Vue({
+
+        el: '#app', //用于管理要挂载的元素
+        data: obj
+    })
+</script>
+</body>
+</html>

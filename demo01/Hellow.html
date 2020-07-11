@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    {{message}} <br>
+    <ul>
+        <li  v-for="item in movies">{{item}}</li>
+    </ul>
+
+    下拉框数据
+    <select >
+        <option v-for="item in movies">{{item}}</option>
+    </select><br>
+
+    <h2> 当前计数： {{counter}}</h2>
+    <!--<button v-on:click="counter++">+</button>
+    <button v-on:click="counter--">-</button>-->
+    <!--<button v-on:click="increment">+</button>
+    <button v-on:click="subscribe">-</button>-->
+    <!--语法糖-->
+    <button @click="increment">+</button>
+    <button @click="subscribe">-</button>
+
+
+</div>
+<script src="../js/vue.js"></script>
+<script >
+    const obj ={ //定义数据
+        message: '你好',
+        movies: ['111', '222', '333', '444'],
+        counter: 0
+    }
+    //let 变量  const 常量
+    const app = new Vue({
+
+        el: '#app', //用于管理要挂载的元素
+        data: obj,
+        methods: {
+            increment: function () {
+                this.counter++
+                console.log('3333333333333')
+            },
+            subscribe: function () {
+                this.counter--
+                console.log('77777777777')
+            }
+
+        },
+        created: function () {
+            console.log('created')
+        },
+        mounted: function () {
+            console.log('mounted')
+        }
+    })
+</script>
+
+</body>
+</html>
