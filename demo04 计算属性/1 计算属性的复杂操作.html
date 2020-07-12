@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <!--mustache 语法-->
+    {{message}}
+    <h2>{{firstName + ' ' + lastName}}</h2>
+    <h2>{{firstName}} {{lastName}}</h2>
+    <!--方法拼接-->
+    <h2>{{getFullName()}}</h2>
+    <!--计算属性  不加()-->
+    <h2>{{fullName}}</h2>
+    <!--总价格-->
+    <h2>总价格{{totalPrice}}</h2>
+
+</div>
+<script src="../js/vue.js"></script>
+<script >
+    const obj ={ //定义数据
+        firstName: 'wang',
+        lastName: 'jisa',
+        books: [
+            {id: 110, name: 'Unix编程艺术', price: 110},
+            {id: 111, name: '代码大全', price: 110},
+            {id: 112, name: '深入理解计算机原理', price: 110},
+            {id: 113, name: '现在操作系统', price: 110},
+            {id: 114, name: '并发编程', price: 110},
+        ]
+
+    }
+    //let 变量  const 常量
+    const app = new Vue({
+        el: '#app', //用于管理要挂载的元素
+        data: obj,
+        //计算属性
+        computed: {
+            fullName: function () {
+                return this.firstName + ' ' + this.lastName
+            },
+            totalPrice: function () {
+                let result = 0;
+                // for (let i=0; i< this.books.length; i++){
+                //     result += this.books[i].price
+                // }
+                // for (let i in this.books){
+                //     result += this.books[i].price
+                // }
+                for (let book of this.books) {
+                    result += book.price
+                }
+                return result
+            }
+        },
+        methods: {
+            getFullName: function () {
+                return this.firstName + ' ' + this.lastName
+            }
+        }
+    })
+</script>
+</body>
+</html>

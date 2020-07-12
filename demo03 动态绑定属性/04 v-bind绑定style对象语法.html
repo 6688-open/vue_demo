@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .title {
+            font-size: 50px;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <!--mustache 语法-->
+
+
+
+    <!--<h2 v-bind:style="{key(属性名):value(属性值)}"> {{message}}</h2>-->
+    <!--key 是变量  值必须加单引号  否则就会去 data里面找  找不到就会报错 -->
+    <h2 :style="{fontSize: '50px'}"> {{message}}</h2>
+    <h2 :style="{fontSize: finalSize}"> {{message}}</h2>
+    <h2 :style="{fontSize: finalSize1 + 'px', backgroundColor: finalColor}"> {{message}}</h2>
+    <h2 :style="getStyle()"> {{message}}</h2>
+</div>
+<script src="../js/vue.js"></script>
+<script >
+    const obj ={ //定义数据
+        message: '你好',
+        imgUrl: 'https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1593951228&di=6e5d0d97cb7999bfefd621263a13137e&src=http://a3.att.hudong.com/14/75/01300000164186121366756803686.jpg',
+        aHref: 'http://www.baidu.com',
+        finalSize: '100px',
+        finalSize1: 20,
+        finalColor: 'red'
+
+    }
+    //let 变量  const 常量
+    const app = new Vue({
+        el: '#app', //用于管理要挂载的元素
+        data: obj,
+        methods: {
+            getStyle: function () {
+                return {fontSize: this.finalSize1 + 'px', color: this.finalColor}
+            }
+        }
+    })
+</script>
+</body>
+</html>
