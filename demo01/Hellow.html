@@ -9,7 +9,7 @@
     {{message}} <br>
 
     <ul>
-        <li  v-for="item in movies">{{item}}</li>
+        <li  v-for="(item, index) in movies">{{index}}-----{{item}}</li>
     </ul>
 
     下拉框数据
