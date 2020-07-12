@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <!--mustache 语法-->
+    {{message}}
+    <h2>{{firstName + ' ' + lastName}}</h2>
+    <h2>{{firstName}} {{lastName}}</h2>
+    <!--方法拼接-->
+    <h2>{{getFullName()}}</h2>
+    <!--计算属性  不加()-->
+    <h2>{{fullName}}</h2>
+
+</div>
+<script src="../js/vue.js"></script>
+<script >
+    const obj ={ //定义数据
+        firstName: 'wang',
+        lastName: 'jisa',
+
+    }
+    //let 变量  const 常量
+    const app = new Vue({
+        el: '#app', //用于管理要挂载的元素
+        data: obj,
+        //计算属性
+        computed: {
+            /*简写*/
+            // fullName: function () {
+            //     return this.firstName + ' ' + this.lastName
+            // }
+            fullName: {
+                /*一般是3只读方法  所以set不需要重写*/
+                set: function () {
+
+                },
+                get: function () {
+                    return this.firstName + ' ' + this.lastName
+                }
+            }
+        },
+        methods: {
+            getFullName: function () {
+                return this.firstName + ' ' + this.lastName
+            }
+        }
+    })
+</script>
+</body>
+</html>
