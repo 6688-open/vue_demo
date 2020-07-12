@@ -11,6 +11,10 @@
 <button>按钮4</button>
 <button>按钮5</button>
 <script>
+    // function 有作用域
+    //ES5 中的var 没有块级作用域的
+    //ES5 if for 没有块级作用域的概念 必须借助function的作用域来解决应用外面的变量的问题
+    // ES6中 加入了 let  const 对if for  支持了块级作用域
 
 
     // 变量作用域： 变量在什么地方可用
@@ -32,26 +36,26 @@
 //     }
 
 
-    //for i被 var修饰 块级作用域 值被改变 的问题 2
+    // ES5   for i被 var修饰 块级作用域 值被改变 的问 题 2
     //为什么闭包可以解决问题  因为函数是一个作用域
-    var buts = document.getElementsByTagName('button');
-    for (var i=1; i<= buts.length; i++) {
-        (function (num) {
-            buts[i].addEventListener('click', function () {
-                console.log('第' + num + '个按钮被点击');
-                alert('第' + num + '个按钮被点击')
-            })
-        })(i)
-    }
-
-    /* let 有块级作用域的概念*/
-    // const buts = document.getElementsByTagName('button');
-    // for (let i=0; i< buts.length; i++) {
-    //     buts[i].addEventListener('click', function () {
-    //         console.log('第' + i + '个按钮被点击');
-    //         alert('第' + i + '个按钮被点击')
-    //     })
+    // var buts = document.getElementsByTagName('button');
+    // for (var i=1; i<= buts.length; i++) {
+    //     (function (num) {
+    //         buts[i].addEventListener('click', function () {
+    //             console.log('第' + num + '个按钮被点击');
+    //             alert('第' + num + '个按钮被点击')
+    //         })
+    //     })(i)
     // }
+
+    /* ES6  let 有块级作用域的概念*/
+    const buts = document.getElementsByTagName('button');
+    for (let i=0; i< buts.length; i++) {
+        buts[i].addEventListener('click', function () {
+            console.log('第' + i + '个按钮被点击');
+            alert('第' + i + '个按钮被点击')
+        })
+    }
 
 
 
