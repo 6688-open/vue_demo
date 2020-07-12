@@ -15,9 +15,8 @@
    <!--<h2 :class="active">  {{message}} </h2>-->
     <!--可以加载多个类  为true时 把active加载到h2标签里  false则不加载      true可以从vue实例中获取-->
     <!--class 可以合并-->
-   <h2 class="title" :class="{active: isActive, line: isLine}">  {{message}} </h2>
+   <h2 class="title" :class="[active, 'isLine']">  {{message}} </h2>
    <h2 class="title" :class="getClasses()">  {{message}} </h2>
-    <button v-on:click="OnClick">button</button>
 
 </div>
 <script src="../js/vue.js"></script>
@@ -35,11 +34,8 @@
         el: '#app', //用于管理要挂载的元素
         data: obj,
         methods: {
-            OnClick: function () {
-                this.isActive = !this.isActive
-            },
             getClasses: function () {
-                return {active: this.isActive, line: this.isLine}
+                return [this.active, 'isLine']
             }
         }
     })
