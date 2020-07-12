@@ -7,12 +7,15 @@
 <body>
 <div id="app">
     <!--mustache 语法-->
-    {{message}}
+    <!--直接拼接   语法过于繁琐-->
     <h2>{{firstName + ' ' + lastName}}</h2>
-    <h2>{{firstName}} {{lastName}}</h2>
     <!--方法拼接-->
     <h2>{{getFullName()}}</h2>
+    <h2>{{getFullName()}}</h2>
+    <h2>{{getFullName()}}</h2>
     <!--计算属性  不加()-->
+    <h2>{{fullName}}</h2>
+    <h2>{{fullName}}</h2>
     <h2>{{fullName}}</h2>
 
 </div>
@@ -29,25 +32,14 @@
         data: obj,
         //计算属性
         computed: {
-            /*简写*/
-            // fullName: function () {
-            //     return this.firstName + ' ' + this.lastName
-            // }
-            fullName: {
-                /*一般是3只读方法  所以set不需要重写*/
-                set: function (newValue) {
-                    console.log(newValue)
-                    const names = newValue.split(` `);
-                    this.firstName = names[0];
-                    this.lastName = names[1];
-                },
-                get: function () {
-                    return this.firstName + ' ' + this.lastName
-                }
+            fullName: function () {
+                console.log('fullName')
+                return this.firstName + ' ' + this.lastName
             }
         },
         methods: {
             getFullName: function () {
+                console.log('getFullName')
                 return this.firstName + ' ' + this.lastName
             }
         }
